@@ -1,0 +1,37 @@
+application: ApplicationName
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: true
+
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest
+
+handlers:
+
+- url: /css
+  static_dir: static/css
+
+- url: /js
+  static_dir: static/js
+
+- url: /img
+  static_dir: static/img
+
+- url: /favicon.ico
+  static_files: static/favicon.ico
+  upload: static/favicon.ico
+
+- url: /robots.txt
+  static_files: static/robots.txt
+  upload: static/robots.txt
+
+- url: .*
+  script: salesupgradeslash.app
+
+env_variables:
+  SFDC_USE_SANDBOX: False
+  SLACK_TOKEN: <INSERT TOKEN>
